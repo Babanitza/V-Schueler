@@ -22,7 +22,8 @@
             border-bottom-right-radius: 30px;
         }
 
-        td, th {
+        td,
+        th {
             overflow: auto;
             border: 1px solid #ddd;
             padding: 8px;
@@ -535,6 +536,30 @@
 
 
     </div>
+    <script>
+        const API = "https://vertrauensschueler-production-ca61.up.railway.app/api";
+        async function speichern() {
+            let name = document.getElementById("name").value;
+            let klasse = document.getElementById("class").value;
+            let problem = document.getElementById("problem").value;
+            let pause = document.getElementById("pause").value;
+            let vertrauensschueler = document.getElementById("vertrauensschueler").innerHTML;
+            try {
+                await fetch(API + "/einträge", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name, klasse, problem, pause, vertrauensschueler
+                    })
+                });
+                alert("Eintrag erfolgreich gespeichert");
+            } catch (err) {
+                alert("Fehler beim Speichern");
+                console.error(err);
+            }
+        }
+
+    </script>
 </body>
 
 </html>
