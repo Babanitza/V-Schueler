@@ -25,18 +25,10 @@ const pool = mysql.createPool({
 // ------------------------------------------------------
 // POST: Bestellung speichern
 // ------------------------------------------------------
-app.post("/api/bestellungen", async (req, res) => {
+app.post("/api/eintraege", async (req, res) => {
   const {
-    name, klasse, e_mail, telefonnummer, adresse,
-    artikel_1, logo_1, logo_platzierung_1, farbe_1, groesse_1, anzahl_1, einzelpreis_1, kosten_1,
-    artikel_2, logo_2, logo_platzierung_2, farbe_2, groesse_2, anzahl_2, einzelpreis_2, kosten_2,
-    artikel_3, logo_3, logo_platzierung_3, farbe_3, groesse_3, anzahl_3, einzelpreis_3, kosten_3,
-    gesamtkosten, rechnung_verschickt, bezahlt_am, erledigt
+    name, klasse, problem, pause, vertrauensschueler
   } = req.body;
-
-  if (!name || !klasse || !e_mail || !telefonnummer || !adresse) {
-    return res.status(400).json({ error: "Fehlende Felder: Kontakdaten und/oder Artikel 1" });
-  }
 
   try {
     await pool.query(

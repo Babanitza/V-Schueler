@@ -545,7 +545,7 @@
             let pause = document.getElementById("pause").value;
             let vertrauensschueler = document.getElementById("vertrauensschueler").innerHTML;
             try {
-                await fetch(API + "/einträge", {
+                await fetch(API + "/eintraege", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
